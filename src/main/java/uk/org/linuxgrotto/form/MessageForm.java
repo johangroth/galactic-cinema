@@ -1,10 +1,13 @@
 package uk.org.linuxgrotto.form;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
 public class MessageForm {
 	
 	private String name;
+
+	@Email
 	private String email;
 	
 	@Length(min=9)
@@ -15,30 +18,39 @@ public class MessageForm {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	public String getWebsite() {
 		return website;
 	}
+
 	public void setWebsite(String website) {
 		this.website = website;
 	}
+
 	public String getMessage() {
 		return message;
 	}
+
 	public void setMessage(String message) {
 		this.message = message;
 	}
@@ -53,6 +65,7 @@ public class MessageForm {
 				.append(message).append("]");
 		return builder.toString();
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -60,6 +73,7 @@ public class MessageForm {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -76,7 +90,4 @@ public class MessageForm {
 			return false;
 		return true;
 	}
-	
-	
-	
 }

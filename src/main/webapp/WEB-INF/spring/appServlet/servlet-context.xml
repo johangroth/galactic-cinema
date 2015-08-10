@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/faces
         http://www.springframework.org/schema/faces/spring-faces-2.2.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+	<!-- DispatcherServlet Context: defines this servlet's request-processing
 		infrastructure -->
 	<context:component-scan base-package="uk.org.linuxgrotto" />
 
@@ -43,37 +43,8 @@
     <beans:bean class="org.springframework.faces.webflow.JsfFlowHandlerAdapter">
         <beans:property name="flowExecutor" ref="flowExecutor" />
     </beans:bean>
+
 	<!-- A listener maintain one FacesContext instance per Web Flow request... -->
 	<beans:bean id="facesContextListener" class="org.springframework.faces.webflow.FlowFacesContextLifecycleListener" />
-
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving
-		up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/css/**" location="/css/" />
-	<resources mapping="/js/libs/**" location="/js/libs/" />
-	<resources mapping="/img/**" location="/img/" />
-
-	<!-- Internationalization support -->
-
-	<beans:bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<beans:property name="defaultLocale" value="en_US" />
-	</beans:bean>
- 
-	<beans:bean id="localeChangeInterceptor"
-		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-		<beans:property name="paramName" value="language" />
-	</beans:bean>
- 
-	<beans:bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" >
-		<beans:property name="interceptors">
-		   <beans:list>
-			<beans:ref bean="localeChangeInterceptor" />
-		   </beans:list>
-		</beans:property>
-	</beans:bean>
-
-	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-		<beans:property name="basename" value="locale/messages" />
-	</beans:bean>
 
 </beans:beans>

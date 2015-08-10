@@ -21,16 +21,16 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
-	private static List<MessageForm> messageFormRepository = new ArrayList<MessageForm>();
+	private static List<MessageForm> messageFormRepository = new ArrayList<>();
 
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homeForm(Model model) {
-		logger.info("Welcome home! from Primefaces");
+		log.info("Welcome home! from Primefaces");
 
 		model.addAttribute("messageInfo", new MessageForm());
 
@@ -38,8 +38,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String create(
-			@Valid @ModelAttribute("messageInfo") MessageForm messageForm,
+	public String create(@Valid @ModelAttribute("messageInfo") MessageForm messageForm,
 			BindingResult result) {
 
 		if (result.hasErrors()) {
