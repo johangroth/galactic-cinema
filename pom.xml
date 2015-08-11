@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>uk.org.linuxgrotto</groupId>
-    <artifactId>galatic-cinema</artifactId>
+    <artifactId>galactic-cinema</artifactId>
     <name>galactic-cinema</name>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
