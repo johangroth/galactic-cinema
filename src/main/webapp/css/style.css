@@ -33,7 +33,7 @@
 	/* -- CSS3 - create a background gradient -- */
 	background: -webkit-gradient(linear, 0% 0%, 0% 40%, from(#EEE), to(#FFF)
 		);
-	background: -moz-linear-gradient(0% 40% 90deg, #FFF, #EEE);
+	background: -moz-linear-gradient(90deg, #FFF, #EEE);
 	/* -- CSS3 - add a drop shadow -- */
 	-webkit-box-shadow: 0px 0 50px #ccc;
 	-moz-box-shadow: 0px 0 50px #ccc;
@@ -56,8 +56,7 @@
 /* =============================================================================
    HTML5 element display
    ========================================================================== */
-article,aside,details,figcaption,figure,footer,header,hgroup,nav,section
-	{
+article,aside,details,figcaption,figure,footer,header,nav,section {
 	display: block;
 }
 
@@ -108,15 +107,13 @@ body,button,input,select,textarea {
  * No text-shadow: twitter.com/miketaylr/status/12228805301
  * Also: hot pink!
  */
-:
-:-moz-selection {
+::-moz-selection {
 	background: #fe57a1;
 	color: #fff;
 	text-shadow: none;
 }
 
-:
-:selection {
+::selection {
 	background: #fe57a1;
 	color: #fff;
 	text-shadow: none;
@@ -275,62 +272,9 @@ img {
 /*
  * Correct overflow displayed oddly in IE9 
  */
-svg
-
-
-
-
-
-
-
-
-:not
-
-
-
-
-
-
-
-
-(
-:root
-
-
-
-
-
-
-
-
-)
+svg:not(:root)
 {
-overflow
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-hidden
-
-
-
-
-
-
-;
+	overflow:hidden;
 }
 
 /* =============================================================================
@@ -355,9 +299,8 @@ form {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	/* -- CSS3 - create a background gradient -- */
-	background: -webkit-gradient(linear, 0% 0%, 0% 40%, from(#EEE), to(#FFF)
-		);
-	background: -moz-linear-gradient(0% 40% 90deg, #FFF, #EEE);
+	background: -webkit-gradient(linear, 0% 0%, 0% 40%, from(#EEE), to(#FFF));
+	background: -moz-linear-gradient(90deg, #FFF, #EEE);
 	/* -- CSS3 - add a drop shadow -- */
 	-webkit-box-shadow: 0px 0 50px #ccc;
 	-moz-box-shadow: 0px 0 50px #ccc;
@@ -455,10 +398,8 @@ input
  * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ 
  */
 button
-:
-:-moz-focus-inner,input
-:
-:-moz-focus-inner {
+::-moz-focus-inner,input
+::-moz-focus-inner {
 	border: 0;
 	padding: 0;
 }
@@ -890,7 +831,7 @@ form {
 	/* -- CSS3 - create a background gradient -- */
 	background: -webkit-gradient(linear, 0% 0%, 0% 40%, from(#EEE), to(#FFF)
 		);
-	background: -moz-linear-gradient(0% 40% 90deg, #FFF, #EEE);
+	background: -moz-linear-gradient(90deg, #FFF, #EEE);
 	/* -- CSS3 - add a drop shadow -- */
 	-webkit-box-shadow: 0px 0 50px #ccc;
 	-moz-box-shadow: 0px 0 50px #ccc;
@@ -971,7 +912,7 @@ input[type="submit"] {
 	/* -- CSS3 Shadow - create a shadow around each input element -- */
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#18a5cc),
 		to(#0a85a8) );
-	background: -moz-linear-gradient(25% 75% 90deg, #0a85a8, #18a5cc);
+	background: -moz-linear-gradient(90deg, #0a85a8, #18a5cc);
 	/* -- CSS3 - Rounded Corners -- */
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -1155,9 +1096,9 @@ table {
  
 a
 :after,a
-[href ^ ="javascript:"]
+[href="javascript:"]
 :after,a
-[href ^ ="#"]
+[href="#"]
 :after {
 		content: "";
 	} /* Don't show links for images, or javascript/internal links */
