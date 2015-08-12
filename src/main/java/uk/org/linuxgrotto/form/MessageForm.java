@@ -1,5 +1,7 @@
 package uk.org.linuxgrotto.form;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
@@ -68,26 +70,28 @@ public class MessageForm {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		return result;
+		return new HashCodeBuilder()
+				.append(name)
+				.append(email)
+				.append(phone)
+				.append(website)
+				.append(message)
+				.toHashCode();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MessageForm other = (MessageForm) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		return true;
+        if (obj instanceof MessageForm) {
+            final MessageForm other = (MessageForm) obj;
+            return new EqualsBuilder()
+                    .append(name, other.name)
+                    .append(email, other.email)
+                    .append(phone, other.phone)
+                    .append(website, other.website)
+                    .append(message, other.message)
+                    .isEquals();
+        } else {
+            return false;
+        }
 	}
 }
