@@ -61,10 +61,17 @@ public class MessageForm {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MessageForm [name=").append(name).append(", email=")
-				.append(email).append(", phone=").append(phone)
-				.append(", website=").append(website).append(", message=")
-				.append(message).append("]");
+		builder.append("MessageForm [name=")
+                .append(name)
+                .append(", email=")
+				.append(email)
+                .append(", phone=")
+                .append(phone)
+				.append(", website=")
+                .append(website)
+                .append(", message=")
+				.append(message)
+                .append("]");
 		return builder.toString();
 	}
 
