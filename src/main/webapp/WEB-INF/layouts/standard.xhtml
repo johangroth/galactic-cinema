@@ -9,21 +9,27 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Galactic Cinema</title>
+    <!-- Blue Print Framework CSS -->
 	<link rel="stylesheet" href="${request.contextPath}/app/resources/styles/blueprint/screen.css" type="text/css" media="screen, projection" />
 	<link rel="stylesheet" href="${request.contextPath}/app/resources/styles/blueprint/print.css" type="text/css" media="print" />
 	<!--[if lt IE 8]>
 		<link rel="stylesheet" href="${request.servletPath}/styles/blueprint/ie.css" type="text/css" media="screen, projection" />
 	<![endif]-->
+    <!-- Import fancy-type plugin. -->
+    <link rel="stylesheet" href="${request.contextPath}/app/resources/styles/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
 	<ui:insert name="headIncludes"/>
 </h:head>
 <h:body>
 <div class="container">
-	<div>
-		<h1>Galactic Cinema</h1>
+	<div id="header" class="span-24 last">
+		<h1 id="galactic_cinema"><img src="icons/Cinema-icon.png" alt="Galactic cinema header images" id="cinema-image" />Galactic Cinema</h1>
 		<h3 class="alt">
 			<ui:insert name="title"/>
 		</h3>
 		<hr/>
+        <div id="subheader" class="span-24 last">
+            <h3 class="alt">Get the experience of a life time at Galactic Cinema</h3>
+        </div>
 	</div>
 	<div>	
 		<ui:insert name="notes"/>
