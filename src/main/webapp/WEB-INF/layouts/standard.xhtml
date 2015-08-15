@@ -22,14 +22,11 @@
 <h:body>
 <div class="container">
 	<div id="header" class="span-24 last">
-		<h1 id="galactic_cinema"><img src="../icons/Cinema-icon.png" alt="image" id="cinema-image" />Galactic Cinema</h1>
+		<h1 id="galactic_cinema"><h:graphicImage value="../icons/Cinema-icon.png" alt="image" id="cinema-image" />Galactic Cinema</h1>
+        <hr/>
 		<h3 class="alt">
 			<ui:insert name="title"/>
 		</h3>
-		<hr/>
-        <div id="subheader" class="span-24 last">
-            <h3 class="alt">Get the experience of a life time at Galactic Cinema</h3>
-        </div>
 	</div>
 	<div>	
 		<ui:insert name="notes"/>
