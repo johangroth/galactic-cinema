@@ -39,7 +39,7 @@ import java.util.List;
 public class ApplicationConfiguration {
     private static final Logger log = LoggerFactory.getLogger(ApplicationConfiguration.class);
 	private static final String PROPERTIES_FILE = "application.properties";
-	private static final String PROPERTIES_URL = "file:///opt/services/accountancytimeline/" + PROPERTIES_FILE;
+	private static final String PROPERTIES_URL = "file:///opt/services/galactic-cinema/" + PROPERTIES_FILE;
 
     /**
      * This configuration is needed for @Value annotation to work with ${...} place holders.
