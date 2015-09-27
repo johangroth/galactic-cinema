@@ -50,6 +50,7 @@ public class ApplicationConfiguration {
     @Bean
     public static PropertySourcesPlaceholderConfigurer properties() {
     	PropertySourcesPlaceholderConfigurer pspc = new PropertySourcesPlaceholderConfigurer();
+
     	pspc.setIgnoreResourceNotFound(true);
     	pspc.setIgnoreUnresolvablePlaceholders(true);
 
@@ -70,4 +71,5 @@ public class ApplicationConfiguration {
 
     	return pspc;
     }
+
 }

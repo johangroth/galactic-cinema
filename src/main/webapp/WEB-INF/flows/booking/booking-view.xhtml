@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="layouts/standard.xhtml" >
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/layouts/standard.xhtml">
     <ui:define name="title">
         Galactic Cinema
+    </ui:define>
+    <ui:define name="content">
+
+        <h:outputLink value="#{imdb.imdbUrl}">#{imdb.imdbUrl}</h:outputLink>
     </ui:define>
 </ui:composition>
