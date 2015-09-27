@@ -1,5 +1,7 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="../layouts/standard.xhtml">
     <ui:define name="title">
         Get the experience of a life time at Galactic Cinema
@@ -49,7 +51,7 @@
                 <div class="box">
                     <span class="quiet">Thor reviewed Jupiter Ascending</span>
                     <div class="quiet">Rating: 4/5</div>
-                    <a href="#" class="quiet">Read this review</a>
+                    <h:outputLink styleClass="quiet">Read this review</h:outputLink>
                 </div>
 
             </div>
