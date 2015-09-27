@@ -19,19 +19,15 @@ package uk.org.linuxgrotto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.faces.bean.ManagedBean;
 import java.io.Serializable;
 
 /**
  * Created by jgroth on 27/09/15.
  */
-@ManagedBean(name = Imdb.NAME)
 @Component
 public class Imdb implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    public static final String NAME = "imdb";
 
     @Value("${url}")
     private String imdbUrl;
