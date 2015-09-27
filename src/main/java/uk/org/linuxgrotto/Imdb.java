@@ -1,4 +1,4 @@
-package uk.org.linuxgrotto.config;
+package uk.org.linuxgrotto;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
