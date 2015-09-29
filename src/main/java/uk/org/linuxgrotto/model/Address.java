@@ -16,6 +16,11 @@ package uk.org.linuxgrotto.model;
  * limitations under the License.
  */
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import javax.persistence.Entity;
 
 /**
@@ -97,6 +102,60 @@ public class Address extends GalacticCinemaEntity {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof User == false) {
+            return false;
+        }
+
+        if (this == obj) {
+            return true;
+        }
+
+        Address address = (Address) obj;
+        Boolean identityEquals = super.identityEquals(address);
+
+        if (identityEquals == null) {
+            return new EqualsBuilder()
+                    .appendSuper(super.equals(obj))
+                    .append(line1, address.line1)
+                    .append(line2, address.line2)
+                    .append(line3, address.line3)
+                    .append(line4, address.line4)
+                    .append(line5, address.line5)
+                    .append(postCode, address.postCode)
+                    .append(county, address.county)
+                    .append(country, address.country)
+                    .isEquals();
+        }
+        return identityEquals;
+    }
+
+    @Override
+    public int hashCode() {
+        if (super.identityHashCode() != -1) {
+            return new HashCodeBuilder().appendSuper(super.hashCode()).toHashCode();
+        }
+
+        return new HashCodeBuilder()
+                .appendSuper(super.hashCode())
+                .append(line1)
+                .append(line2)
+                .append(line3)
+                .append(line4)
+                .append(line5)
+                .append(postCode)
+                .append(county)
+                .append(country)
+                .toHashCode();
+
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 
 }

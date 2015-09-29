@@ -16,10 +16,14 @@ package uk.org.linuxgrotto.model;
  * limitations under the License.
  */
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.validator.constraints.Email;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by jgroth on 28/09/15.
@@ -29,6 +33,9 @@ public class User extends GalacticCinemaEntity {
 
     private static final long serialVersionUID = 3016962615640549425L;
 
+    @Column(unique = true)
+    private String userName;
+
     private String name;
 
     @Email
@@ -36,6 +43,17 @@ public class User extends GalacticCinemaEntity {
 
     @OneToOne
     private Address address;
+
+    @Temporal(TemporalType.DATE)
+    private Date signupDate;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public String getName() {
         return name;
@@ -59,6 +77,60 @@ public class User extends GalacticCinemaEntity {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Date getSignupDate() {
+        return signupDate;
+    }
+
+    public void setSignupDate(Date signupDate) {
+        this.signupDate = signupDate;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof User == false) {
+            return false;
+        }
+
+        if (this == obj) {
+            return true;
+        }
+
+        User user = (User) obj;
+        Boolean identityEquals = super.identityEquals(user);
+
+        if (identityEquals == null) {
+            return new EqualsBuilder()
+                    .appendSuper(super.equals(obj))
+                    .append(userName, user.userName)
+                    .append(name, user.userName)
+                    .append(email, user.email)
+                    .append(address, user.address)
+                    .append(signupDate, user.signupDate)
+                    .isEquals();
+        }
+        return identityEquals;
+    }
+
+    @Override
+    public int hashCode() {
+        if (super.identityHashCode() != -1) {
+            return new HashCodeBuilder().append(super.identityHashCode()).toHashCode();
+        }
+        return new HashCodeBuilder()
+                .appendSuper(super.hashCode())
+                .append(userName)
+                .append(name)
+                .append(email)
+                .append(address)
+                .append(signupDate)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 
 }

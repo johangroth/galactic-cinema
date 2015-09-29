@@ -21,6 +21,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
@@ -33,6 +34,7 @@ public abstract class GalacticCinemaEntity extends AbstractPersistable<Long> {
     private static final long serialVersionUID = 2468429844954725039L;
 
     @Version
+    @Column(columnDefinition = MySQLDialect.INT_DEFAULT_ZERO, nullable = false)
     protected int optLock = 0;
 
     /**
@@ -48,11 +50,13 @@ public abstract class GalacticCinemaEntity extends AbstractPersistable<Long> {
             return null;
         }
 
-        if (!getId().equals(entity.getId()))
-            return Boolean.valueOf(false);
+        if (!getId().equals(entity.getId())) {
+            return false;
+        }
 
-        if (!(getVersion() == entity.getVersion()))
-            return Boolean.valueOf(false);
+        if (!(getVersion() == entity.getVersion())) {
+            return false;
+        }
 
         return true;
     }
