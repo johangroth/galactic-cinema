@@ -15,6 +15,7 @@
         <springwebflow-version>2.4.1.RELEASE</springwebflow-version>
         <jsf-version>2.2.12</jsf-version>
         <primefaces-version>5.2</primefaces-version>
+        <spring-data-version>1.9.0.RELEASE</spring-data-version>
     </properties>
 
     <dependencyManagement>
@@ -83,6 +84,12 @@
             <groupId>org.springframework.webflow</groupId>
             <artifactId>spring-faces</artifactId>
             <version>${springwebflow-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-version}</version>
         </dependency>
 
         <!-- Servlet -->
@@ -165,6 +172,7 @@
             </snapshots>
         </repository>
     </repositories>
+
     <build>
         <plugins>
             <plugin>
