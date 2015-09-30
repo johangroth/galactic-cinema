@@ -21,7 +21,7 @@ import org.hibernate.dialect.MySQL5InnoDBDialect;
 /**
  * Created by jgroth on 29/09/15.
  */
-public class MySQLDialect  extends MySQL5InnoDBDialect {
+public class GalacticMySQLDialect extends MySQL5InnoDBDialect {
 
         private static final String BOOLEAN_COLUMN_DEFINITION = "bit default ";
         public static final String BOOLEAN_DEFAULT_TRUE = BOOLEAN_COLUMN_DEFINITION + "true";

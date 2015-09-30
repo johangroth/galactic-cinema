@@ -34,7 +34,7 @@ public abstract class GalacticCinemaEntity extends AbstractPersistable<Long> {
     private static final long serialVersionUID = 2468429844954725039L;
 
     @Version
-    @Column(columnDefinition = MySQLDialect.INT_DEFAULT_ZERO, nullable = false)
+    @Column(columnDefinition = GalacticMySQLDialect.INT_DEFAULT_ZERO, nullable = false)
     protected int optLock = 0;
 
     /**
