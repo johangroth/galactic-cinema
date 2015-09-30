@@ -19,6 +19,8 @@ package uk.org.linuxgrotto.model;
 import org.hibernate.dialect.MySQL5InnoDBDialect;
 
 /**
+ * Set engine to InnoDB (via inheritance) and charset to UTF8
+ *
  * Created by jgroth on 29/09/15.
  */
 public class GalacticMySQLDialect extends MySQL5InnoDBDialect {
@@ -30,10 +32,10 @@ public class GalacticMySQLDialect extends MySQL5InnoDBDialect {
         public static final String INT_DEFAULT_ZERO = "int(11) default 0";
 
         /**
-         * Manually set the table type string so that we get our explicit engine, charset and collation
+         * Manually set the table type string so that we get charset and collation
          */
         @Override
         public String getTableTypeString() {
-                return " DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci";
+                return super.getTableTypeString() + " DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci";
         }
 }

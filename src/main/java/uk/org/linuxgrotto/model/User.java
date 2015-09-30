@@ -26,6 +26,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
+ * User entity
  * Created by jgroth on 28/09/15.
  */
 @Entity
@@ -41,7 +42,7 @@ public class User extends GalacticCinemaEntity {
     @Email
     private String email;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
     private Address address;
 
     @Temporal(TemporalType.DATE)
@@ -89,7 +90,7 @@ public class User extends GalacticCinemaEntity {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof User == false) {
+        if (obj instanceof User) {
             return false;
         }
 

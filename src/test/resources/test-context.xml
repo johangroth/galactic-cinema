@@ -4,7 +4,8 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
       http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/tx
@@ -13,14 +14,14 @@
     <context:component-scan base-package="uk.org.linuxgrotto"/>
 
     <bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="uk.org.linuxgrotto.model" />
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="uk.org.linuxgrotto.model"/>
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
                 <prop key="hibernate.dialect">uk.org.linuxgrotto.model.GalacticMySQLDialect</prop>
                 <prop key="hibernate.ejb.naming_strategy">uk.org.linuxgrotto.model.GalacticNamingStrategy</prop>
             </props>
@@ -28,18 +29,18 @@
     </bean>
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/galacticdb" />
-        <property name="username" value="galactic" />
-        <property name="password" value="galactic" />
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/galacticdb"/>
+        <property name="username" value="galactic"/>
+        <property name="password" value="galactic"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="myEmf" />
+        <property name="entityManagerFactory" ref="myEmf"/>
     </bean>
-    <tx:annotation-driven />
+    <tx:annotation-driven/>
 
     <bean id="persistenceExceptionTranslationPostProcessor"
-          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
 </beans>

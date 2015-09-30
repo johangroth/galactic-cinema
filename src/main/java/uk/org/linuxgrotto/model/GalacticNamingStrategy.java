@@ -1,4 +1,4 @@
-package uk.org.linuxgrotto.repositories;
+package uk.org.linuxgrotto.model;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
@@ -16,22 +16,19 @@ package uk.org.linuxgrotto.repositories;
  * limitations under the License.
  */
 
-import org.springframework.stereotype.Repository;
-import uk.org.linuxgrotto.model.AbstractJpaDao;
-import uk.org.linuxgrotto.model.User;
-import uk.org.linuxgrotto.model.UserDao;
+import org.hibernate.cfg.ImprovedNamingStrategy;
 
 /**
- * Repository for User.
+ * Naming strategy to add _id to foreign keys.
  *
- * Created by jgroth on 29/09/15.
+ * Created by jgroth on 30/09/15.
  */
-@Repository
-public class UserRepository extends AbstractJpaDao<User> implements UserDao {
+public class GalacticNamingStrategy extends ImprovedNamingStrategy {
+    private static final long serialVersionUID = 3082992621330399204L;
 
-    public UserRepository() {
-        super();
-        setClazz(User.class);
-    }
+        @Override
+        public String foreignKeyColumnName(String propertyName, String propertyEntityName, String propertyTableName, String referencedColumnName) {
+                return super.foreignKeyColumnName(propertyName + "_id", propertyEntityName, propertyTableName, referencedColumnName);
+        }
 
 }

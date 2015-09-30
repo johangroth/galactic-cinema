@@ -1,4 +1,4 @@
-package uk.org.linuxgrotto.repositories;
+package uk.org.linuxgrotto.service;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
@@ -16,22 +16,34 @@ package uk.org.linuxgrotto.repositories;
  * limitations under the License.
  */
 
-import org.springframework.stereotype.Repository;
-import uk.org.linuxgrotto.model.AbstractJpaDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import uk.org.linuxgrotto.model.User;
 import uk.org.linuxgrotto.model.UserDao;
 
-/**
- * Repository for User.
- *
- * Created by jgroth on 29/09/15.
- */
-@Repository
-public class UserRepository extends AbstractJpaDao<User> implements UserDao {
+import javax.transaction.Transactional;
+import java.util.List;
 
-    public UserRepository() {
-        super();
-        setClazz(User.class);
+/**
+ * Service to access user.
+ * Created by jgroth on 30/09/15.
+ */
+@Service
+@Transactional
+public class UserService {
+
+    @Autowired
+    private UserDao dao;
+
+    public void create(final User user) {
+        dao.create(user);
     }
 
+    public User findOne(final long id) {
+        return dao.findOne(id);
+    }
+
+    public List<User> findAll() {
+        return dao.findAll();
+    }
 }
