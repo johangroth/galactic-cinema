@@ -42,7 +42,7 @@ public class User extends GalacticCinemaEntity {
     @Email
     private String email;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
     private Address address;
 
     @Temporal(TemporalType.DATE)
@@ -90,7 +90,7 @@ public class User extends GalacticCinemaEntity {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof User) {
+        if (obj instanceof User == false) {
             return false;
         }
 

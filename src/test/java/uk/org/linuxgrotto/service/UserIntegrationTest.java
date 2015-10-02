@@ -23,11 +23,11 @@ package uk.org.linuxgrotto.service;
  */
 
 import org.joda.time.LocalDate;
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uk.org.linuxgrotto.model.Address;
@@ -35,18 +35,15 @@ import uk.org.linuxgrotto.model.User;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/test-context.xml")
+@DirtiesContext(classMode = BEFORE_EACH_TEST_METHOD)
 public class UserIntegrationTest {
 
     @Autowired
     private UserService userService;
-
-    @After
-    public void tearDown() {
-
-    }
 
     @Test
     public final void whenUserCreated_noExceptions() {
