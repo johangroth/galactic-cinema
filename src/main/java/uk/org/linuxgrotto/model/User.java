@@ -90,7 +90,7 @@ public class User extends GalacticCinemaEntity {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof User == false) {
+        if (!(obj instanceof User)) {
             return false;
         }
 

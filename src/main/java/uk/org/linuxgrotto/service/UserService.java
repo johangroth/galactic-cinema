@@ -46,4 +46,12 @@ public class UserService {
     public List<User> findAll() {
         return dao.findAll();
     }
+
+    public User findByEmail(String email) {
+        return dao.findByEmail(email);
+    }
+
+    public User update(User user) {
+        return dao.update(user);
+    }
 }

@@ -85,6 +85,8 @@ public class UserIntegrationTest {
         User found = userService.findOne(user.getId());
         assertNotNull(found);
         assertEquals(user, found);
+        assertEquals("johangroth1@gmail.com", found.getEmail());
+        assertEquals("jgroth", found.getUserName());
         assertNotNull(found.getSignupDate());
         assertNotNull(found.getAddress());
         assertNotNull(found.getAddress().getId());
@@ -96,5 +98,20 @@ public class UserIntegrationTest {
         user.setUserName("jgroth");
         userService.create(user);
         userService.create(user);
+    }
+
+    @Test
+    public final void whenCreatedUserUpdated_NoExceptions() {
+        User user = new User();
+        user.setUserName("jgroth");
+        user.setEmail("johangroth1@gmail.com");
+        User userToUpdate = userService.findByEmail("johangroth1@gmail.com");
+        assertNotNull(userToUpdate);
+        assertEquals(user, userToUpdate);
+        userToUpdate.setEmail("johan.groth@crunch.co.uk");
+        userToUpdate = userService.update(userToUpdate);
+        assertNotNull(userToUpdate);
+        assertEquals("johan.groth@crunch.co.uk", userToUpdate.getEmail());
+
     }
 }
