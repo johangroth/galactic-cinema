@@ -16,13 +16,14 @@ package uk.org.linuxgrotto.repository;
  * limitations under the License.
  */
 
+import org.springframework.transaction.annotation.Transactional;
 import uk.org.linuxgrotto.model.BaseRepository;
 import uk.org.linuxgrotto.model.User;
 
 /**
  * Created by jgroth on 07/10/15.
  */
-
+@Transactional
 public interface UserRepository extends BaseRepository<User, Long> {
 
     User findByEmail(String email);

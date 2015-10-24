@@ -17,11 +17,11 @@ package uk.org.linuxgrotto.service;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import uk.org.linuxgrotto.model.User;
-import uk.org.linuxgrotto.model.UserDao;
+import uk.org.linuxgrotto.repository.UserRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -29,11 +29,11 @@ import java.util.List;
  * Created by jgroth on 30/09/15.
  */
 @Service
-@Transactional
+@Repository
 public class UserService {
 
     @Autowired
-    private UserDao dao;
+    private UserRepository dao;
 
     public void create(final User user) {
         dao.create(user);
