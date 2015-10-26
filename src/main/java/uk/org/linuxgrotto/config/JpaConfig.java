@@ -16,78 +16,68 @@ package uk.org.linuxgrotto.config;
  * limitations under the License.
  */
 
-import org.springframework.beans.factory.DisposableBean;
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 import java.util.Properties;
 
 /**
  * Created by jgroth on 08/10/15.
  */
 @Configuration
-@EnableJpaRepositories(basePackages={"uk.org.linuxgrotto"})
+@EnableWebMvc
 @EnableTransactionManagement
-public class JpaConfig implements DisposableBean {
+@EnableJpaRepositories(basePackages = { "uk.org.linuxgrotto.model" })
+@PropertySource(value = { "classpath:application.properties" })
+public class JpaConfig {
 
-    private EmbeddedDatabase ed;
+    @Autowired
+    private Environment environment;
 
-    @Bean(name="hsqlInMemory")
-    public EmbeddedDatabase hsqlInMemory() {
+    @Bean
+    public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
+        LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        localContainerEntityManagerFactoryBean.setDataSource(dataSource());
+        localContainerEntityManagerFactoryBean.setPackagesToScan(new String[]{"uk.org.linuxgrotto.model"});
 
-        if ( this.ed == null ) {
-            EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-            this.ed = builder.setType(EmbeddedDatabaseType.HSQL).build();
-        }
+        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        localContainerEntityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
+        localContainerEntityManagerFactoryBean.setJpaProperties(hibernateProperties());
 
-        return this.ed;
-
+        return localContainerEntityManagerFactoryBean;
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+    public DataSource dataSource() {
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName(environment.getProperty("jdbc.driverClassName"));
+        dataSource.setUrl(environment.getProperty("jdbc.url"));
+        dataSource.setUsername(environment.getProperty("jdbc.username"));
+        dataSource.setPassword(environment.getProperty("jdbc.password"));
 
-        LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
-
-        lcemfb.setDataSource(this.hsqlInMemory());
-        lcemfb.setPackagesToScan("uk.org.linuxgrotto");
-
-        lcemfb.setPersistenceUnitName("MyPU");
-
-        HibernateJpaVendorAdapter va = new HibernateJpaVendorAdapter();
-        lcemfb.setJpaVendorAdapter(va);
-
-        Properties ps = new Properties();
-        ps.put("hibernate.dialect", "uk.org.linuxgrotto.model.GalacticMySQLDialect");
-        ps.put("hibernate.hbm2ddl.auto", "update");
-        ps.put("hibernate.ejb.naming_strategy", "uk.org.linuxgrotto.model.GalacticNamingStrategy");
-        lcemfb.setJpaProperties(ps);
-
-        lcemfb.afterPropertiesSet();
-
-        return lcemfb;
-
+        return dataSource;
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager() {
-
-        JpaTransactionManager tm = new JpaTransactionManager();
-
-        tm.setEntityManagerFactory(this.entityManagerFactory().getObject() );
-
-        return tm;
-
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(emf);
+        return transactionManager;
     }
 
     @Bean
@@ -95,13 +85,14 @@ public class JpaConfig implements DisposableBean {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    @Override
-    public void destroy() {
+    private Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
+        properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
+        properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.ejb.naming_strategy", environment.getRequiredProperty("hibernate.ejb.naming_strategy"));
 
-        if ( this.ed != null ) {
-            this.ed.shutdown();
-        }
-
+        return properties;
     }
-
 }

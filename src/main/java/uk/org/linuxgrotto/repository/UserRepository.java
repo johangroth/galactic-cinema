@@ -16,6 +16,7 @@ package uk.org.linuxgrotto.repository;
  * limitations under the License.
  */
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import uk.org.linuxgrotto.model.BaseRepository;
 import uk.org.linuxgrotto.model.User;
@@ -23,6 +24,7 @@ import uk.org.linuxgrotto.model.User;
 /**
  * Created by jgroth on 07/10/15.
  */
+@Repository
 @Transactional
 public interface UserRepository extends BaseRepository<User, Long> {
 
