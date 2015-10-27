@@ -34,7 +34,7 @@ public class UserService {
     private UserRepository dao;
 
     public void create(final User user) {
-        dao.create(user);
+        dao.save(user);
     }
 
     public User findOne(final long id) {
@@ -50,6 +50,7 @@ public class UserService {
     }
 
     public User update(User user) {
-        return dao.update(user);
+        return dao.save(user);
     }
+
 }

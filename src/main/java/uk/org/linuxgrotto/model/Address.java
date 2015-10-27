@@ -106,7 +106,7 @@ public class Address extends GalacticCinemaEntity {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof User == false) {
+        if (!(obj instanceof Address)) {
             return false;
         }
 
@@ -150,7 +150,6 @@ public class Address extends GalacticCinemaEntity {
                 .append(county)
                 .append(country)
                 .toHashCode();
-
     }
 
     @Override

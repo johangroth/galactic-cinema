@@ -30,6 +30,7 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import uk.org.linuxgrotto.model.Address;
 import uk.org.linuxgrotto.model.User;
 
@@ -40,6 +41,7 @@ import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFOR
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/test-context.xml")
 @DirtiesContext(classMode = BEFORE_EACH_TEST_METHOD)
+@WebAppConfiguration
 public class UserIntegrationTest {
 
     @Autowired

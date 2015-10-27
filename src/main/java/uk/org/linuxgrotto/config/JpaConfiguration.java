@@ -42,18 +42,18 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "uk.org.linuxgrotto.model" })
+@EnableJpaRepositories(basePackages = { "uk.org.linuxgrotto" })
 @PropertySource(value = { "classpath:application.properties" })
-public class JpaConfig {
+public class JpaConfiguration {
 
     @Autowired
     private Environment environment;
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         localContainerEntityManagerFactoryBean.setDataSource(dataSource());
-        localContainerEntityManagerFactoryBean.setPackagesToScan(new String[]{"uk.org.linuxgrotto.model"});
+        localContainerEntityManagerFactoryBean.setPackagesToScan(new String[]{"uk.org.linuxgrotto"});
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         localContainerEntityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);

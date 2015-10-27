@@ -15,6 +15,4 @@
 	-->
 	<mvc:view-controller path="/home" />
 	
-	<context:component-scan base-package="uk.org.linuxgrotto" />
-	 
 </beans>
