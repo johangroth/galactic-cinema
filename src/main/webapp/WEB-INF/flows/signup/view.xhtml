@@ -1,14 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 template="/WEB-INF/layouts/standard.xhtml">
 
     <ui:define name="title">
-        Enter your preferred username and password to signup
+        Please, enter your preferred username and password to signup in the form below:
     </ui:define>
     <ui:define name="content">
-        <h:outputLabel value="Hello, world"/>
+
+        <h:form id="loginForm">
+            <br/>
+            <h:outputLabel value="User name: "/>
+            <h:inputText id="userName" value="#{loginCredentials.userName}"/>
+            <br/>
+
+            <h:outputLabel value="Password: " />
+            <h:inputSecret id="password" value="#{loginCredentials.password}"/>
+            <br/>
+
+            <h:commandButton id="signupButton" value="Signup" action="signupCredentialsEntered" />
+
+
+        </h:form>
     </ui:define>
 
 </ui:composition>

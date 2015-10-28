@@ -24,7 +24,6 @@ import org.hibernate.validator.constraints.Email;
 import uk.org.linuxgrotto.model.base.GalacticCinemaEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import java.util.Date;
 
 /**
@@ -39,7 +38,6 @@ public class Person extends GalacticCinemaEntity {
     @Column(unique = true)
     private String userName;
 
-    @Min(6)
     private String password;
 
     private String name;

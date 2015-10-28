@@ -2,7 +2,7 @@ package uk.org.linuxgrotto.signup;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -26,23 +26,26 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 /**
- * Created by jgroth on 27/10/15.
+ * Created by jgroth on 28/10/15.
  */
 @Service
-public class LoginService {
+public class SignupService {
 
     @Autowired
     private UserService userService;
 
-    public String performLogin(LoginCredentials loginCredentials) throws IncorrectCredentialsException, InvalidKeySpecException, NoSuchAlgorithmException {
+    public String performSignup(LoginCredentials loginCredentials) throws IncorrectCredentialsException, InvalidKeySpecException, NoSuchAlgorithmException {
+        // Throw if user already exists
         Person person = userService.findByUserName(loginCredentials.getUserName());
-        if (person == null) {
+        if (person != null && person.getUserName().length() > 0) {
             throw new IncorrectCredentialsException();
         }
         PasswordHash passwordHash = new PasswordHash();
-        if (loginCredentials.getPassword() != null && passwordHash.validatePassword(loginCredentials.getPassword(), person.getPassword())) {
-            return "success";
-        }
-        throw new IncorrectCredentialsException();
+        person = new Person();
+        person.setUserName(loginCredentials.getUserName());
+        String hashedPassword = passwordHash.createHash(loginCredentials.getPassword());
+        person.setPassword(hashedPassword);
+        userService.create(person);
+        return "success";
     }
 }

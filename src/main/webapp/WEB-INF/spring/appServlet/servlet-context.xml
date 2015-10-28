@@ -20,6 +20,8 @@
     <!-- Scan for Spring beans declared via annotations. -->
 	<context:annotation-config/>
 
+	<context:component-scan base-package="uk.org.linuxgrotto"/>
+
     <!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
 

@@ -4,6 +4,20 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
       parent="parent-flow">
 
-    <view-state id="view" />
+    <var name="loginCredentials" class="uk.org.linuxgrotto.signup.LoginCredentials" />
+
+    <!-- Display the login page -->
+    <view-state id="displaySignupView" view="view.xhtml" model="loginCredentials">
+        <transition on="signupCredentialsEntered" to="performSignupAction"/>
+    </view-state>
+
+    <action-state id="performSignupAction">
+        <evaluate expression="signupService.performSignup(loginCredentials)"/>
+        <transition to="displaySignupSuccessView"/>
+        <transition on-exception="uk.org.linuxgrotto.signup.IncorrectCredentialsException" to="displayErrorView"/>
+    </action-state>
+
+    <view-state id="displaySignupSuccessView" view="view-success.xhtml"/>
+    <view-state id="displayErrorView" view="view-error.xhtml"/>
 
 </flow>

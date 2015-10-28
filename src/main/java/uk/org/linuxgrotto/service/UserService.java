@@ -17,7 +17,7 @@ package uk.org.linuxgrotto.service;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import uk.org.linuxgrotto.model.Person;
 import uk.org.linuxgrotto.repository.UserRepository;
 
@@ -27,7 +27,7 @@ import java.util.List;
  * Service to access user.
  * Created by jgroth on 30/09/15.
  */
-@Component
+@Service
 public class UserService {
 
     @Autowired
@@ -47,6 +47,10 @@ public class UserService {
 
     public Person findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public Person findByUserName(String userName) {
+        return userRepository.findByUserName(userName);
     }
 
     public Person update(Person person) {

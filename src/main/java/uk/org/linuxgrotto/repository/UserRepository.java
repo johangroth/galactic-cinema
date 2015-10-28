@@ -16,16 +16,14 @@ package uk.org.linuxgrotto.repository;
  * limitations under the License.
  */
 
-import org.springframework.stereotype.Repository;
 import uk.org.linuxgrotto.model.Person;
 import uk.org.linuxgrotto.repository.base.BaseRepository;
 
 /**
  * Created by jgroth on 07/10/15.
  */
-@Repository
 public interface UserRepository extends BaseRepository<Person, Long> {
 
     Person findByEmail(String email);
-
+    Person findByUserName(String userName);
 }
