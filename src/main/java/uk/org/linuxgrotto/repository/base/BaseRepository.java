@@ -1,4 +1,4 @@
-package uk.org.linuxgrotto.model;
+package uk.org.linuxgrotto.repository.base;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
@@ -16,19 +16,17 @@ package uk.org.linuxgrotto.model;
  * limitations under the License.
  */
 
-import org.hibernate.cfg.ImprovedNamingStrategy;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
+
+import java.io.Serializable;
 
 /**
- * Naming strategy to add _id to foreign keys.
- *
+ * Abstract data access object
  * Created by jgroth on 30/09/15.
  */
-public class GalacticNamingStrategy extends ImprovedNamingStrategy {
-    private static final long serialVersionUID = 3082992621330399204L;
+@NoRepositoryBean
+public interface BaseRepository<T, ID extends Serializable> extends JpaRepository<T, ID> {
 
-        @Override
-        public String foreignKeyColumnName(String propertyName, String propertyEntityName, String propertyTableName, String referencedColumnName) {
-                return super.foreignKeyColumnName(propertyName + "_id", propertyEntityName, propertyTableName, referencedColumnName);
-        }
 
 }

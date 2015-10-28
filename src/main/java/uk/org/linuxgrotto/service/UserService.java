@@ -17,8 +17,9 @@ package uk.org.linuxgrotto.service;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import uk.org.linuxgrotto.model.User;
+import uk.org.linuxgrotto.model.Person;
 import uk.org.linuxgrotto.repository.UserRepository;
 
 import java.util.List;
@@ -27,30 +28,30 @@ import java.util.List;
  * Service to access user.
  * Created by jgroth on 30/09/15.
  */
-@Service
+@Component
 public class UserService {
 
     @Autowired
     private UserRepository dao;
 
-    public void create(final User user) {
-        dao.save(user);
+    public void create(final Person person) {
+        dao.save(person);
     }
 
-    public User findOne(final long id) {
+    public Person findOne(final long id) {
         return dao.findOne(id);
     }
 
-    public List<User> findAll() {
+    public List<Person> findAll() {
         return dao.findAll();
     }
 
-    public User findByEmail(String email) {
+    public Person findByEmail(String email) {
         return dao.findByEmail(email);
     }
 
-    public User update(User user) {
-        return dao.save(user);
+    public Person update(Person person) {
+        return dao.save(person);
     }
 
 }

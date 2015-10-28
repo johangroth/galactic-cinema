@@ -1,4 +1,4 @@
-package uk.org.linuxgrotto.model;
+package uk.org.linuxgrotto.model.base;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth

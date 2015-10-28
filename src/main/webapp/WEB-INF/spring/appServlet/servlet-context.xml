@@ -17,7 +17,10 @@
 	<import resource="controllers.xml" />
 	<import resource="webflow.xml" />
 
-	<!-- Enables the Spring MVC @Controller programming model -->
+    <!-- Scan for Spring beans declared via annotations. -->
+    <context:component-scan base-package="uk.org.linuxgrotto"/>
+	<context:annotation-config/>
+    <!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
 
 	<!-- 

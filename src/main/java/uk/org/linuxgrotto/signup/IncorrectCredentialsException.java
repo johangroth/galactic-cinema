@@ -1,4 +1,4 @@
-package uk.org.linuxgrotto.model;
+package uk.org.linuxgrotto.signup;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
@@ -16,17 +16,11 @@ package uk.org.linuxgrotto.model;
  * limitations under the License.
  */
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.NoRepositoryBean;
-
-import java.io.Serializable;
-
 /**
- * Abstract data access object
- * Created by jgroth on 30/09/15.
+ * Created by jgroth on 27/10/15.
  */
-@NoRepositoryBean
-public interface BaseRepository<T, ID extends Serializable> extends JpaRepository<T, ID> {
+public class IncorrectCredentialsException extends Exception {
 
+    private static final long serialVersionUID = -1440379059890490836L;
 
 }

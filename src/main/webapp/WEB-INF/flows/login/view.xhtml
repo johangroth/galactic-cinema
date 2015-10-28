@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
                 template="/WEB-INF/layouts/standard.xhtml">
+    <ui:define name="title">
+        Get the experience of a life time at Galactic Cinema
+    </ui:define>
+    <ui:define name="content">
 
-    <h:outputLabel value="Hello, world"/>
+        <h:form id="loginForm">
+            <h:outputLabel value="User name: "/>
+            <h:inputText id="userName" value="#{loginCredentials.userName}"/>
+            <br/>
+
+            <h:outputLabel value="Password: " />
+            <h:inputText id="password" value="#{loginCredentials.password}"/>
+            <br/>
+
+            <h:commandButton id="loginButton" value="Login" action="loginCredentialsEntered" />
+
+
+        </h:form>
+
+    </ui:define>
 
 </ui:composition>

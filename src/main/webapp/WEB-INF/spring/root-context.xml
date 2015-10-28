@@ -10,4 +10,6 @@
       http://www.springframework.org/schema/tx
       http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+
+    <!--<bean id="loginService" class="uk.org.linuxgrotto.signup.LoginService"/>-->
 </beans>

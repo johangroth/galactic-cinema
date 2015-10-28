@@ -21,8 +21,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.validator.constraints.Email;
+import uk.org.linuxgrotto.model.base.GalacticCinemaEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.Date;
 
 /**
@@ -30,12 +32,15 @@ import java.util.Date;
  * Created by jgroth on 28/09/15.
  */
 @Entity(name="userz")
-public class User extends GalacticCinemaEntity {
+public class Person extends GalacticCinemaEntity {
 
     private static final long serialVersionUID = 3016962615640549425L;
 
     @Column(unique = true)
     private String userName;
+
+    @Min(6)
+    private String password;
 
     private String name;
 
@@ -64,6 +69,14 @@ public class User extends GalacticCinemaEntity {
         this.name = name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -90,7 +103,7 @@ public class User extends GalacticCinemaEntity {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof User)) {
+        if (!(obj instanceof Person)) {
             return false;
         }
 
@@ -98,17 +111,17 @@ public class User extends GalacticCinemaEntity {
             return true;
         }
 
-        User user = (User) obj;
-        Boolean identityEquals = super.identityEquals(user);
+        Person person = (Person) obj;
+        Boolean identityEquals = super.identityEquals(person);
 
         if (identityEquals == null) {
             return new EqualsBuilder()
                     .appendSuper(super.equals(obj))
-                    .append(userName, user.userName)
-                    .append(name, user.userName)
-                    .append(email, user.email)
-                    .append(address, user.address)
-                    .append(signupDate, user.signupDate)
+                    .append(userName, person.userName)
+                    .append(name, person.userName)
+                    .append(email, person.email)
+                    .append(address, person.address)
+                    .append(signupDate, person.signupDate)
                     .isEquals();
         }
         return identityEquals;

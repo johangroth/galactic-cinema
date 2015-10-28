@@ -1,4 +1,4 @@
-package uk.org.linuxgrotto.repository;
+package uk.org.linuxgrotto.signup;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
@@ -16,16 +16,19 @@ package uk.org.linuxgrotto.repository;
  * limitations under the License.
  */
 
-import org.springframework.stereotype.Repository;
-import uk.org.linuxgrotto.model.Person;
-import uk.org.linuxgrotto.repository.base.BaseRepository;
+import org.springframework.stereotype.Service;
 
 /**
- * Created by jgroth on 07/10/15.
+ * Created by jgroth on 27/10/15.
  */
-@Repository
-public interface UserRepository extends BaseRepository<Person, Long> {
+@Service
+public class LoginService {
 
-    Person findByEmail(String email);
-
+    public String performLogin(LoginCredentials loginCredentials) throws IncorrectCredentialsException {
+        if (loginCredentials.getUserName() != null && loginCredentials.getUserName().trim().equalsIgnoreCase("alba")
+                && loginCredentials.getPassword() != null && loginCredentials.getPassword().trim().equalsIgnoreCase("pass")) {
+            return "success";
+        }
+        throw new IncorrectCredentialsException();
+    }
 }

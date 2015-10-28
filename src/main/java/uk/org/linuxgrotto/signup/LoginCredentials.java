@@ -1,8 +1,8 @@
-package uk.org.linuxgrotto.repository;
+package uk.org.linuxgrotto.signup;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,16 +16,32 @@ package uk.org.linuxgrotto.repository;
  * limitations under the License.
  */
 
-import org.springframework.stereotype.Repository;
-import uk.org.linuxgrotto.model.Person;
-import uk.org.linuxgrotto.repository.base.BaseRepository;
+import java.io.Serializable;
 
 /**
- * Created by jgroth on 07/10/15.
+ * Created by jgroth on 27/10/15.
  */
-@Repository
-public interface UserRepository extends BaseRepository<Person, Long> {
 
-    Person findByEmail(String email);
+public class LoginCredentials implements Serializable {
 
+    private static final long serialVersionUID = -2560127852538433891L;
+
+    private String userName;
+    private String password;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

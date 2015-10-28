@@ -26,6 +26,7 @@ import org.springframework.core.io.AbstractFileResolvingResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ import java.util.List;
  * Created by jgroth on 10/08/15.
  */
 @Configuration
+@EnableWebMvc
 @ComponentScan(basePackages = "uk.org.linuxgrotto")
 public class ApplicationConfiguration {
     private static final Logger log = LoggerFactory.getLogger(ApplicationConfiguration.class);
