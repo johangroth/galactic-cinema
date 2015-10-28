@@ -18,7 +18,6 @@ package uk.org.linuxgrotto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import uk.org.linuxgrotto.model.Person;
 import uk.org.linuxgrotto.repository.UserRepository;
 
@@ -32,26 +31,26 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository dao;
+    private UserRepository userRepository;
 
     public void create(final Person person) {
-        dao.save(person);
+        userRepository.save(person);
     }
 
     public Person findOne(final long id) {
-        return dao.findOne(id);
+        return userRepository.findOne(id);
     }
 
     public List<Person> findAll() {
-        return dao.findAll();
+        return userRepository.findAll();
     }
 
     public Person findByEmail(String email) {
-        return dao.findByEmail(email);
+        return userRepository.findByEmail(email);
     }
 
     public Person update(Person person) {
-        return dao.save(person);
+        return userRepository.save(person);
     }
 
 }

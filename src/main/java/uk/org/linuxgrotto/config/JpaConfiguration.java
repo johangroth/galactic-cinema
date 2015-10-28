@@ -40,7 +40,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "uk.org.linuxgrotto" })
+@EnableJpaRepositories
 @PropertySource(value = { "classpath:application.properties" })
 public class JpaConfiguration {
 
