@@ -4,6 +4,11 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 template="/WEB-INF/layouts/standard.xhtml">
 
-    <h:outputLabel value="Hello, world"/>
+    <ui:define name="title">
+        Enter your preferred username and password to signup
+    </ui:define>
+    <ui:define name="content">
+        <h:outputLabel value="Hello, world"/>
+    </ui:define>
 
 </ui:composition>

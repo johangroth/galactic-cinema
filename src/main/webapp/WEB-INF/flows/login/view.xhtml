@@ -9,12 +9,14 @@
     <ui:define name="content">
 
         <h:form id="loginForm">
+            Please enter your username and password to login
+            <br/>
             <h:outputLabel value="User name: "/>
             <h:inputText id="userName" value="#{loginCredentials.userName}"/>
             <br/>
 
             <h:outputLabel value="Password: " />
-            <h:inputText id="password" value="#{loginCredentials.password}"/>
+            <h:inputSecret id="password" value="#{loginCredentials.password}"/>
             <br/>
 
             <h:commandButton id="loginButton" value="Login" action="loginCredentialsEntered" />
