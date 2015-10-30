@@ -30,7 +30,7 @@ import java.util.Date;
  * User entity
  * Created by jgroth on 28/09/15.
  */
-@Entity(name="userz")
+@Entity
 public class Person extends GalacticCinemaEntity {
 
     private static final long serialVersionUID = 3016962615640549425L;

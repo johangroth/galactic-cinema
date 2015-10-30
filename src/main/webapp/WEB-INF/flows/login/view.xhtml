@@ -10,18 +10,19 @@
     <ui:define name="content">
 
         <h:form id="loginForm">
-            Please enter your username and password to login
+            #{msg['user.login.explanantion']}
             <br/>
-            <h:outputLabel value="User name: "/>
+            <h:outputLabel value="#{msg['username']}"/>
+            <br/>
             <h:inputText id="userName" value="#{loginCredentials.userName}"/>
             <br/>
 
-            <h:outputLabel value="Password: " />
+            <h:outputLabel value="#{msg['password']}" />
+            <br/>
             <h:inputSecret id="password" value="#{loginCredentials.password}"/>
             <br/>
 
-            <h:commandButton id="loginButton" value="Login" action="loginCredentialsEntered" />
-
+            <h:commandButton id="loginButton" value="#{msg['button.login']}" action="loginCredentialsEntered" styleClass="prepend-top"/>
 
         </h:form>
 

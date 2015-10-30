@@ -21,15 +21,18 @@
 <div class="container">
 	<hr/>
 	<div id="header" class="span-17 colborder">
-		<h1 id="galactic_cinema"><h:graphicImage value="../icons/Cinema-icon.png" alt="image" id="cinema-image" />Galactic Cinema</h1>
+		<h1 id="galactic_cinema">
+			<h:graphicImage value="../icons/Cinema-icon.png" alt="image" id="cinema-image" />
+			Galactic Cinema
+		</h1>
         <hr/>
 		<h3 class="alt">
 			<ui:insert name="title"/>
 		</h3>
 	</div>
 	<div class="span-5 last" id="signup">
-		<h:outputLink styleClass="caps" id="signup-link" value="signup">signup</h:outputLink>
-		<h:outputLink styleClass="caps" id="login-link" value="login">login</h:outputLink>
+		<h:outputLink styleClass="caps" id="signup-link" value="signup">#{msg['label.signup']}</h:outputLink>
+		<h:outputLink styleClass="caps" id="login-link" value="login">#{msg['label.login']}</h:outputLink>
 	</div>
 	<div>
 		<ui:insert name="notes"/>

@@ -5,22 +5,23 @@
                 template="/WEB-INF/layouts/standard.xhtml">
 
     <ui:define name="title">
-        Please, enter your preferred username and password to signup in the form below:
+        #{msg['user.signup.explanation']}
     </ui:define>
     <ui:define name="content">
 
         <h:form id="loginForm">
             <br/>
-            <h:outputLabel value="User name: "/>
+            <h:outputLabel value="#{msg['username']}"/>
+            <br/>
             <h:inputText id="userName" value="#{loginCredentials.userName}"/>
             <br/>
 
-            <h:outputLabel value="Password: " />
+            <h:outputLabel value="#{msg['password']}" />
+            <br/>
             <h:inputSecret id="password" value="#{loginCredentials.password}"/>
             <br/>
 
-            <h:commandButton id="signupButton" value="Signup" action="signupCredentialsEntered" />
-
+            <h:commandButton id="signupButton" value="#{msg['button.signup']}" action="signupCredentialsEntered" styleClass="prepend-top"/>
 
         </h:form>
     </ui:define>
