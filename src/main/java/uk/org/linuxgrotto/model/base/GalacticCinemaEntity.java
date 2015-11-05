@@ -19,7 +19,6 @@ package uk.org.linuxgrotto.model.base;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -29,7 +28,7 @@ import javax.persistence.Version;
  * Created by jgroth on 28/09/15.
  */
 @MappedSuperclass
-public abstract class GalacticCinemaEntity extends AbstractPersistable<Long> {
+public abstract class GalacticCinemaEntity extends GalacticAbstractPersistable<Long> {
 
     private static final long serialVersionUID = 2468429844954725039L;
 
