@@ -1,8 +1,8 @@
-package uk.org.linuxgrotto.signup;
+package uk.org.linuxgrotto.service;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,32 +20,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.org.linuxgrotto.model.Person;
 import uk.org.linuxgrotto.security.PasswordHash;
-import uk.org.linuxgrotto.service.UserService;
+import uk.org.linuxgrotto.signup.IncorrectCredentialsException;
+import uk.org.linuxgrotto.signup.LoginCredentials;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 /**
- * Created by jgroth on 28/10/15.
+ * Created by jgroth on 27/10/15.
  */
 @Service
-public class SignupService {
+public class LoginService {
 
     @Autowired
-    private UserService userService;
+    private PersonService personService;
 
-    public String performSignup(LoginCredentials loginCredentials) throws IncorrectCredentialsException, InvalidKeySpecException, NoSuchAlgorithmException {
-        // Throw if user already exists
-        Person person = userService.findByUserName(loginCredentials.getUserName());
-        if (person != null && person.getUserName().length() > 0) {
+    public String performLogin(LoginCredentials loginCredentials) throws IncorrectCredentialsException, InvalidKeySpecException, NoSuchAlgorithmException {
+        Person person = personService.findByUserName(loginCredentials.getUserName());
+        if (person == null) {
             throw new IncorrectCredentialsException();
         }
         PasswordHash passwordHash = new PasswordHash();
-        person = new Person();
-        person.setUserName(loginCredentials.getUserName());
-        String hashedPassword = passwordHash.createHash(loginCredentials.getPassword());
-        person.setPassword(hashedPassword);
-        userService.create(person);
-        return "success";
+        if (loginCredentials.getPassword() != null && passwordHash.validatePassword(loginCredentials.getPassword(), person.getPassword())) {
+            return "success";
+        }
+        throw new IncorrectCredentialsException();
     }
 }

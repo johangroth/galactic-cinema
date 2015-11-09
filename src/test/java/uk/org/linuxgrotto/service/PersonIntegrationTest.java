@@ -43,7 +43,7 @@ import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFOR
 public class PersonIntegrationTest {
 
     @Autowired
-    private UserService userService;
+    private PersonService personService;
 
     @Test
     public final void whenUserCreated_noExceptions() {
@@ -59,7 +59,7 @@ public class PersonIntegrationTest {
         address.setCounty("East Sussex");
         address.setCountry("United Kingdom");
         person.setAddress(address);
-        userService.create(person);
+        personService.create(person);
         assertNotNull(person.getId());
     }
 

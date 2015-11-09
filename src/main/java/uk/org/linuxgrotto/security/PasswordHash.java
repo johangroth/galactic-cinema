@@ -118,11 +118,11 @@ public class PasswordHash {
     /**
      * Converts a string of Base64 encoded characters into a byte array.
      *
-     * @param hex the hex string
+     * @param encodedCharacters the encodedCharacters string
      * @return the Base64 string decoded into a byte array
      */
-    private byte[] fromBase64(String hex) {
-        return Base64Utils.decodeFromString(hex);
+    private byte[] fromBase64(String encodedCharacters) {
+        return Base64Utils.decodeFromString(encodedCharacters);
     }
 
     /**

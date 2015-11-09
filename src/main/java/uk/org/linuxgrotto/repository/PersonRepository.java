@@ -22,7 +22,7 @@ import uk.org.linuxgrotto.repository.base.BaseRepository;
 /**
  * Created by jgroth on 07/10/15.
  */
-public interface UserRepository extends BaseRepository<Person, Long> {
+public interface PersonRepository extends BaseRepository<Person> {
 
     Person findByEmail(String email);
     Person findByUserName(String userName);

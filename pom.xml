@@ -16,6 +16,9 @@
         <jsf-version>2.2.12</jsf-version>
         <primefaces-version>5.2</primefaces-version>
         <spring-data-version>1.9.0.RELEASE</spring-data-version>
+        <hibernate-entity-manager-version>4.3.11.Final</hibernate-entity-manager-version>
+        <hibernate-validator-version>5.2.2.Final</hibernate-validator-version>
+        <java-validation-api-version>1.1.0.Final</java-validation-api-version>
     </properties>
 
     <dependencyManagement>
@@ -36,23 +39,22 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.0.2.Final</version>
+            <version>${hibernate-entity-manager-version}</version>
         </dependency>
 
         <!-- Hibernate's Bean Validation (JSR-303) reference implementation. -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>5.2.2.Final</version>
+            <version>${hibernate-validator-version}</version>
         </dependency>
 
         <!-- Bean Validation API -->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
+            <version>${java-validation-api-version}</version>
         </dependency>
-
 
         <!-- Spring -->
         <dependency>
@@ -66,10 +68,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -80,6 +84,7 @@
             <artifactId>spring-webflow</artifactId>
             <version>${springwebflow-version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.webflow</groupId>
             <artifactId>spring-faces</artifactId>
@@ -120,16 +125,19 @@
             <artifactId>jsf-api</artifactId>
             <version>${jsf-version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.sun.faces</groupId>
             <artifactId>jsf-impl</artifactId>
             <version>${jsf-version}</version>
         </dependency>
+
         <dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+
         <!-- PrimeFaces component library -->
         <dependency>
             <groupId>org.primefaces</groupId>

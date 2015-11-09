@@ -19,7 +19,7 @@ package uk.org.linuxgrotto.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.org.linuxgrotto.model.Person;
-import uk.org.linuxgrotto.repository.UserRepository;
+import uk.org.linuxgrotto.repository.PersonRepository;
 
 import java.util.List;
 
@@ -28,10 +28,10 @@ import java.util.List;
  * Created by jgroth on 30/09/15.
  */
 @Service
-public class UserService {
+public class PersonService {
 
     @Autowired
-    private UserRepository userRepository;
+    private PersonRepository userRepository;
 
     public void create(final Person person) {
         userRepository.save(person);
