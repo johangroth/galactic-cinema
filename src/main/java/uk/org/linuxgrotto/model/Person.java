@@ -45,7 +45,7 @@ public class Person extends GalacticCinemaEntity {
     @Email
     private String email;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.ALL})
     private Address address;
 
     @Temporal(TemporalType.DATE)

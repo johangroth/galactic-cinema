@@ -23,34 +23,49 @@ package uk.org.linuxgrotto.service;
  */
 
 import org.joda.time.LocalDate;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 import uk.org.linuxgrotto.model.Address;
 import uk.org.linuxgrotto.model.Person;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/test-context.xml")
-@DirtiesContext(classMode = BEFORE_EACH_TEST_METHOD)
+@ContextConfiguration("/WEB-INF/config/test-context.xml")
 @WebAppConfiguration
-public class PersonIntegrationTest {
+public class PersonIntegrationTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Autowired
     private PersonService personService;
+
+    @PersistenceContext
+    private EntityManager em;
+
+    @Transactional
+    @Before
+    public final void setup() {
+        Query query = em.createQuery("delete from Person");
+        query.executeUpdate();
+    }
 
     @Test
     public final void whenUserCreated_noExceptions() {
         Person person = new Person();
         person.setUserName("jgroth");
         person.setName("Johan Groth");
-        person.setEmail("johangroth1@gmail.com");
+        person.setEmail("johangroth1@gmal.com");
         person.setSignupDate(LocalDate.now().toDate());
 
         Address address = new Address();
@@ -63,9 +78,8 @@ public class PersonIntegrationTest {
         assertNotNull(person.getId());
     }
 
-    /*
     @Test
-    public final void whenUserIsCreated_thenFound() {
+    public final void whenPersonIsCreated_thenFound() {
         Person person = new Person();
         person.setUserName("jgroth");
         person.setName("Johan Groth");
@@ -79,11 +93,11 @@ public class PersonIntegrationTest {
         address.setCountry("United Kingdom");
         person.setAddress(address);
 
-        userService.create(person);
+        personService.create(person);
 
         assertNotNull(person.getId());
 
-        Person found = userService.findOne(person.getId());
+        Person found = personService.findOne(person.getId());
         assertNotNull(found);
         assertEquals(person, found);
         assertEquals("johangroth1@gmail.com", found.getEmail());
@@ -93,25 +107,29 @@ public class PersonIntegrationTest {
         assertNotNull(found.getAddress().getId());
     }
 
-    @Test(expected = InvalidDataAccessApiUsageException.class)
-    public final void whenSameUserIsCreatedTwice_thenDataException() {
+    @Test(expected = org.springframework.dao.DataIntegrityViolationException.class)
+    public final void whenSamePersonIsCreatedTwice_thenDataException() {
         Person person = new Person();
         person.setUserName("jgroth");
-        userService.create(person);
-        userService.create(person);
+        personService.create(person);
+
+        person = new Person();
+        person.setUserName("jgroth");
+        personService.create(person);
     }
 
     @Test
-    public final void whenCreatedUserUpdated_NoExceptions() {
+    public final void whenCreatedPersonUpdated_NoExceptions() {
         Person person = new Person();
         person.setUserName("jgroth");
         person.setEmail("johangroth1@gmail.com");
-        Person personToUpdate = userService.findByEmail("johangroth1@gmail.com");
+        personService.create(person);
+        Person personToUpdate = personService.findByEmail("johangroth1@gmail.com");
         assertNotNull(personToUpdate);
         assertEquals(person, personToUpdate);
         personToUpdate.setEmail("johan.groth@crunch.co.uk");
-        personToUpdate = userService.update(personToUpdate);
+        personToUpdate = personService.update(personToUpdate);
         assertNotNull(personToUpdate);
         assertEquals("johan.groth@crunch.co.uk", personToUpdate.getEmail());
-    } */
+    }
 }

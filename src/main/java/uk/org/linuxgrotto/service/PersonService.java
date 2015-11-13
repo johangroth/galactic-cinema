@@ -31,30 +31,30 @@ import java.util.List;
 public class PersonService {
 
     @Autowired
-    private PersonRepository userRepository;
+    private PersonRepository personRepository;
 
     public void create(final Person person) {
-        userRepository.save(person);
+        personRepository.save(person);
     }
 
     public Person findOne(final long id) {
-        return userRepository.findOne(id);
+        return personRepository.findOne(id);
     }
 
     public List<Person> findAll() {
-        return userRepository.findAll();
+        return personRepository.findAll();
     }
 
     public Person findByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return personRepository.findByEmail(email);
     }
 
     public Person findByUserName(String userName) {
-        return userRepository.findByUserName(userName);
+        return personRepository.findByUserName(userName);
     }
 
     public Person update(Person person) {
-        return userRepository.save(person);
+        return personRepository.save(person);
     }
 
 }
