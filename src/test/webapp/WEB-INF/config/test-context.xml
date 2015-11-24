@@ -5,9 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
 	<!-- Import all files called config.xml from all class paths -->
 	<beans:import resource="classpath*:test-config/config.xml" />
-
 
 </beans:beans>
