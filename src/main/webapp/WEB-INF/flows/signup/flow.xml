@@ -6,7 +6,7 @@
 
     <var name="loginCredentials" class="uk.org.linuxgrotto.signup.LoginCredentials" />
 
-    <!-- Display the login page -->
+    <!-- Display the sign up page -->
     <view-state id="displaySignupView" view="view.xhtml" model="loginCredentials">
         <transition on="signupCredentialsEntered" to="performSignupAction"/>
     </view-state>

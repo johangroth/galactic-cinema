@@ -16,9 +16,36 @@
             <h:inputText id="userName" value="#{loginCredentials.userName}"/>
             <br/>
 
+            <h:outputLabel value="#{msg['first.name']}"/>
+            <br/>
+            <h:inputText id="firstName" value="#{loginCredentials.firstName}"/>
+            <br/>
+
+            <h:outputLabel value="#{msg['surname']}"/>
+            <br/>
+            <h:inputText id="surName" value="#{loginCredentials.surname}"/>
+            <br/>
+
+            <h:outputLabel value="#{msg['address.header']}"/>
+            <br/>
+            <h:outputLabel value="#{msg['address.line1']}"/>
+            <br/>
+            <h:inputText id="addressLine1" value="#{loginCredentials.addressLine1}"/>
+            <br/>
+            <h:outputLabel value="#{msg['address.line2']}"/>
+            <br/>
+            <h:inputText id="addressLine2" value="#{loginCredentials.addressLine2}"/>
+            <br/>
+
+
             <h:outputLabel value="#{msg['password']}" />
             <br/>
             <h:inputSecret id="password" value="#{loginCredentials.password}"/>
+            <br/>
+
+            <h:outputLabel value="#{msg['password.verify']}" />
+            <br/>
+            <h:inputSecret id="verifyPassword" value="#{loginCredentials.verifyPassword}"/>
             <br/>
 
             <h:commandButton id="signupButton" value="#{msg['button.signup']}" action="signupCredentialsEntered" styleClass="prepend-top"/>
