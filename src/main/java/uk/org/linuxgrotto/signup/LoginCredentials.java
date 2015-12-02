@@ -21,18 +21,21 @@ import java.io.Serializable;
 /**
  * Created by jgroth on 27/10/15.
  */
-
 public class LoginCredentials implements Serializable {
 
     private static final long serialVersionUID = -2560127852538433891L;
 
     private String userName;
+    private String email;
     private String firstName;
     private String surname;
     private String password;
     private String verifyPassword;
     private String addressLine1;
     private String addressLine2;
+    private String county;
+    private String country;
+    private String postCode;
 
     public String getFirstName() {
         return firstName;
@@ -40,6 +43,14 @@ public class LoginCredentials implements Serializable {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSurname() {
@@ -90,4 +101,27 @@ public class LoginCredentials implements Serializable {
         this.verifyPassword = verifyPassword;
     }
 
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
 }

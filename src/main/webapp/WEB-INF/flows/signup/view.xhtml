@@ -26,6 +26,11 @@
             <h:inputText id="surName" value="#{loginCredentials.surname}"/>
             <br/>
 
+            <h:outputLabel value="#{msg['email']}"/>
+            <br/>
+            <h:inputText id="email" value="#{loginCredentials.email}"/>
+            <br/>
+
             <h:outputLabel value="#{msg['address.header']}"/>
             <br/>
             <h:outputLabel value="#{msg['address.line1']}"/>
@@ -35,6 +40,18 @@
             <h:outputLabel value="#{msg['address.line2']}"/>
             <br/>
             <h:inputText id="addressLine2" value="#{loginCredentials.addressLine2}"/>
+            <br/>
+            <h:outputLabel value="#{msg['address.county']}"/>
+            <br/>
+            <h:inputText id="county" value="#{loginCredentials.county}"/>
+            <br/>
+            <h:outputLabel value="#{msg['address.country']}"/>
+            <br/>
+            <h:inputText id="country" value="#{loginCredentials.country}"/>
+            <br/>
+            <h:outputLabel value="#{msg['address.postcode']}"/>
+            <br/>
+            <h:inputText id="postCode" value="#{loginCredentials.postCode}"/>
             <br/>
 
 
