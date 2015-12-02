@@ -22,7 +22,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +41,7 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath*:spring-config/test-context.xml")
 @WebAppConfiguration
-public class PersonIT extends AbstractTransactionalJUnit4SpringContextTests {
+public class PersonIT extends AbstractDbunitTransactionalJUnit4SpringContextTests {
 
     @Autowired
     private PersonService personService;
@@ -58,7 +57,7 @@ public class PersonIT extends AbstractTransactionalJUnit4SpringContextTests {
     }
 
     @Test
-    public final void whenUserCreated_noExceptions() {
+    public final void whenPersonIsCreated_noExceptions() {
         Person person = new Person();
         person.setUserName("jgroth");
         person.setName("Johan Groth");
