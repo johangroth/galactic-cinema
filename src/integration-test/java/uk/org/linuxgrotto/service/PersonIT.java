@@ -16,12 +16,6 @@ package uk.org.linuxgrotto.service;
  * limitations under the License.
  */
 
-/**
- * Integration test.
- *
- * Created by jgroth on 30/09/15.
- */
-
 import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,10 +36,13 @@ import javax.persistence.Query;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+/**
+ * Created by jgroth on 02/12/15.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath*:test-config/test-context.xml")
+@ContextConfiguration("classpath*:spring-config/test-context.xml")
 @WebAppConfiguration
-public class PersonIntegrationTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class PersonIT extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Autowired
     private PersonService personService;
@@ -132,4 +129,5 @@ public class PersonIntegrationTest extends AbstractTransactionalJUnit4SpringCont
         assertNotNull(personToUpdate);
         assertEquals("johan.groth@crunch.co.uk", personToUpdate.getEmail());
     }
+
 }
