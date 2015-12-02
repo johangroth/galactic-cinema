@@ -226,6 +226,7 @@
     </repositories>
 
     <build>
+        <finalName>galactic-cinema##${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

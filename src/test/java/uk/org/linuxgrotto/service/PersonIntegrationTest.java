@@ -43,7 +43,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/WEB-INF/config/test-context.xml")
+@ContextConfiguration("classpath*:/WEB-INF/config/test-context.xml")
 @WebAppConfiguration
 public class PersonIntegrationTest extends AbstractTransactionalJUnit4SpringContextTests {
 
