@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:beans="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
       http://www.springframework.org/schema/beans
-      http://www.springframework.org/schema/beans/spring-beans.xsd
-      http://www.springframework.org/schema/tx
-      http://www.springframework.org/schema/tx/spring-tx.xsd">
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Import all files called config.xml from all class paths -->
 	<beans:import resource="classpath*:spring-config/config.xml" />
-
+	<beans:import resource="classpath*:spring-config/db-config.xml" />
 </beans:beans>

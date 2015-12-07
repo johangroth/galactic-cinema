@@ -15,6 +15,10 @@
 
 	<!-- 3rdparty Loggers -->
 <!--
+	<logger name="org.hibernate" level="info">
+		<appender-ref ref="console" />
+	</logger>
+
 	<logger name="org.springframework.core" level="info">>
 		<appender-ref ref="console" />
 	</logger>

@@ -11,58 +11,71 @@
 
         <h:form id="loginForm">
             <br/>
-            <h:outputLabel value="#{msg['username']}"/>
-            <br/>
-            <h:inputText id="userName" value="#{loginCredentials.userName}"/>
-            <br/>
-
-            <h:outputLabel value="#{msg['first.name']}"/>
-            <br/>
-            <h:inputText id="firstName" value="#{loginCredentials.firstName}"/>
+            <h:outputLabel value="#{msg['username']} ">
+                <h:inputText id="userName" value="#{loginCredentials.userName}"/>
+            </h:outputLabel>
             <br/>
 
-            <h:outputLabel value="#{msg['surname']}"/>
-            <br/>
-            <h:inputText id="surName" value="#{loginCredentials.surname}"/>
+            <h:outputLabel value="#{msg['first.name']} ">
+                <h:inputText id="firstName" value="#{loginCredentials.firstName}"/>
+
+            </h:outputLabel>
             <br/>
 
-            <h:outputLabel value="#{msg['email']}"/>
+            <h:outputLabel value="#{msg['surname']} ">
+                <h:inputText id="surName" value="#{loginCredentials.surname}"/>
+
+            </h:outputLabel>
             <br/>
-            <h:inputText id="email" value="#{loginCredentials.email}"/>
+
+            <h:outputLabel value="#{msg['email']} ">
+                <h:inputText id="email" value="#{loginCredentials.email}"/>
+
+            </h:outputLabel>
             <br/>
 
             <h:outputLabel value="#{msg['address.header']}"/>
             <br/>
-            <h:outputLabel value="#{msg['address.line1']}"/>
-            <br/>
-            <h:inputText id="addressLine1" value="#{loginCredentials.addressLine1}"/>
-            <br/>
-            <h:outputLabel value="#{msg['address.line2']}"/>
-            <br/>
-            <h:inputText id="addressLine2" value="#{loginCredentials.addressLine2}"/>
-            <br/>
-            <h:outputLabel value="#{msg['address.county']}"/>
-            <br/>
-            <h:inputText id="county" value="#{loginCredentials.county}"/>
-            <br/>
-            <h:outputLabel value="#{msg['address.country']}"/>
-            <br/>
-            <h:inputText id="country" value="#{loginCredentials.country}"/>
-            <br/>
-            <h:outputLabel value="#{msg['address.postcode']}"/>
-            <br/>
-            <h:inputText id="postCode" value="#{loginCredentials.postCode}"/>
+            <h:outputLabel value="#{msg['address.line1']} ">
+                <h:inputText id="addressLine1" value="#{loginCredentials.addressLine1}"/>
+
+            </h:outputLabel>
             <br/>
 
+            <h:outputLabel value="#{msg['address.line2']} ">
+                <h:inputText id="addressLine2" value="#{loginCredentials.addressLine2}"/>
 
-            <h:outputLabel value="#{msg['password']}" />
-            <br/>
-            <h:inputSecret id="password" value="#{loginCredentials.password}"/>
+            </h:outputLabel>
             <br/>
 
-            <h:outputLabel value="#{msg['password.verify']}" />
+            <h:outputLabel value="#{msg['address.county']} ">
+                <h:inputText id="county" value="#{loginCredentials.county}"/>
+
+            </h:outputLabel>
             <br/>
-            <h:inputSecret id="verifyPassword" value="#{loginCredentials.verifyPassword}"/>
+
+            <h:outputLabel value="#{msg['address.country']} ">
+                <h:inputText id="country" value="#{loginCredentials.country}"/>
+
+            </h:outputLabel>
+            <br/>
+
+            <h:outputLabel value="#{msg['address.postcode']} ">
+                <h:inputText id="postCode" value="#{loginCredentials.postCode}"/>
+
+            </h:outputLabel>
+            <br/>
+
+            <h:outputLabel value="#{msg['password']} ">
+                <h:inputSecret id="password" value="#{loginCredentials.password}"/>
+
+            </h:outputLabel>
+            <br/>
+
+            <h:outputLabel value="#{msg['password.verify']} ">
+                <h:inputSecret id="verifyPassword" value="#{loginCredentials.verifyPassword}"/>
+
+            </h:outputLabel>
             <br/>
 
             <h:commandButton id="signupButton" value="#{msg['button.signup']}" action="signupCredentialsEntered" styleClass="prepend-top"/>

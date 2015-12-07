@@ -12,14 +12,15 @@
         <h:form id="loginForm">
             #{msg['user.login.explanantion']}
             <br/>
-            <h:outputLabel value="#{msg['username']}"/>
-            <br/>
-            <h:inputText id="userName" value="#{loginCredentials.userName}"/>
+            <h:outputLabel value="#{msg['username']} ">
+                <h:inputText id="userName" value="#{loginCredentials.userName}"/>
+            </h:outputLabel>
             <br/>
 
-            <h:outputLabel value="#{msg['password']}" />
-            <br/>
-            <h:inputSecret id="password" value="#{loginCredentials.password}"/>
+            <h:outputLabel value="#{msg['password']} ">
+                <h:inputSecret id="password" value="#{loginCredentials.password}"/>
+            </h:outputLabel>
+
             <br/>
 
             <h:commandButton id="loginButton" value="#{msg['button.login']}" action="loginCredentialsEntered" styleClass="prepend-top"/>

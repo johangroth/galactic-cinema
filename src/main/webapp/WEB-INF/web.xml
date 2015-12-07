@@ -5,6 +5,12 @@
 
 	<display-name>Galactic Cinema</display-name>
 
+	<!-- The default profile -->
+	<context-param>
+		<param-name>spring.profiles.default</param-name>
+		<param-value>production</param-value>
+	</context-param>
+
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

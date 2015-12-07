@@ -17,20 +17,18 @@ package uk.org.linuxgrotto.service;
  */
 
 import org.joda.time.LocalDate;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 import uk.org.linuxgrotto.model.Address;
 import uk.org.linuxgrotto.model.Person;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -41,43 +39,37 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath*:spring-config/test-context.xml")
 @WebAppConfiguration
-public class PersonIT extends AbstractDbunitTransactionalJUnit4SpringContextTests {
+@ActiveProfiles("integration-test")
+public class PersonIT extends AbstractTransactionalJUnit4SpringContextTests {
+
+    private static final Logger log = LoggerFactory.getLogger(PersonIT.class);
 
     @Autowired
     private PersonService personService;
 
-    @PersistenceContext
-    private EntityManager em;
-
-    @Transactional
-    @Before
-    public final void setup() {
-        Query query = em.createQuery("delete from Person");
-        query.executeUpdate();
-    }
-
     @Test
     public final void whenPersonIsCreated_noExceptions() {
         Person person = new Person();
-        person.setUserName("jgroth");
+        person.setUserName("johang");
         person.setName("Johan Groth");
-        person.setEmail("johangroth1@gmal.com");
+        person.setEmail("johangroth1@gmail.com");
         person.setSignupDate(LocalDate.now().toDate());
 
         Address address = new Address();
-        address.setLine1("95 Buckingham Road");
+        address.setLine1("97 Buckingham Road");
         address.setPostCode("BN1 3RB");
         address.setCounty("East Sussex");
         address.setCountry("United Kingdom");
         person.setAddress(address);
         personService.create(person);
         assertNotNull(person.getId());
+        log.info("person is {} ", person.toString());
     }
 
     @Test
     public final void whenPersonIsCreated_thenFound() {
         Person person = new Person();
-        person.setUserName("jgroth");
+        person.setUserName("johang");
         person.setName("Johan Groth");
         person.setEmail("johangroth1@gmail.com");
         person.setSignupDate(LocalDate.now().toDate());
@@ -97,27 +89,29 @@ public class PersonIT extends AbstractDbunitTransactionalJUnit4SpringContextTest
         assertNotNull(found);
         assertEquals(person, found);
         assertEquals("johangroth1@gmail.com", found.getEmail());
-        assertEquals("jgroth", found.getUserName());
+        assertEquals("johang", found.getUserName());
         assertNotNull(found.getSignupDate());
         assertNotNull(found.getAddress());
         assertNotNull(found.getAddress().getId());
+        log.info("person is {} ", person.toString());
     }
 
     @Test(expected = org.springframework.dao.DataIntegrityViolationException.class)
     public final void whenSamePersonIsCreatedTwice_thenDataException() {
         Person person = new Person();
-        person.setUserName("jgroth");
+        person.setUserName("johang");
         personService.create(person);
-
+        log.info("just created person");
         person = new Person();
-        person.setUserName("jgroth");
+        person.setUserName("johang");
         personService.create(person);
+        log.info("should not be reached");
     }
 
     @Test
     public final void whenCreatedPersonUpdated_NoExceptions() {
         Person person = new Person();
-        person.setUserName("jgroth");
+        person.setUserName("johang");
         person.setEmail("johangroth1@gmail.com");
         personService.create(person);
         Person personToUpdate = personService.findByEmail("johangroth1@gmail.com");
@@ -127,6 +121,7 @@ public class PersonIT extends AbstractDbunitTransactionalJUnit4SpringContextTest
         personToUpdate = personService.update(personToUpdate);
         assertNotNull(personToUpdate);
         assertEquals("johan.groth@crunch.co.uk", personToUpdate.getEmail());
+        log.info("person is {} ", person.toString());
     }
 
 }

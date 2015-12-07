@@ -37,6 +37,7 @@ public class LoginCredentials implements Serializable {
     private String country;
     private String postCode;
 
+
     public String getFirstName() {
         return firstName;
     }
