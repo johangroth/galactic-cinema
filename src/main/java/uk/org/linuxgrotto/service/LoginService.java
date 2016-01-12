@@ -36,6 +36,7 @@ public class LoginService {
     private PersonService personService;
 
     public String performLogin(LoginCredentials loginCredentials) throws IncorrectCredentialsException, InvalidKeySpecException, NoSuchAlgorithmException {
+        // This should be rewritten using Spring Security. See example.
         Person person = personService.findByUserName(loginCredentials.getUserName());
         if (person == null) {
             throw new IncorrectCredentialsException();
