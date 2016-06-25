@@ -41,7 +41,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "uk.org.linuxgrotto")
+@EnableJpaRepositories(basePackages = "uk.org.linuxgrotto.persistence")
 @PropertySource(value = { "classpath:application.properties" })
 @Profile("production")
 public class JpaConfiguration {
@@ -53,7 +53,7 @@ public class JpaConfiguration {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         localContainerEntityManagerFactoryBean.setDataSource(dataSource());
-        localContainerEntityManagerFactoryBean.setPackagesToScan(new String[]{"uk.org.linuxgrotto"});
+        localContainerEntityManagerFactoryBean.setPackagesToScan("uk.org.linuxgrotto.persistence");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         localContainerEntityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
