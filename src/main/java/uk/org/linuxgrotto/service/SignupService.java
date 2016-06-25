@@ -18,8 +18,8 @@ package uk.org.linuxgrotto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uk.org.linuxgrotto.model.Address;
-import uk.org.linuxgrotto.model.Person;
+import uk.org.linuxgrotto.persistence.model.Address;
+import uk.org.linuxgrotto.persistence.model.Person;
 import uk.org.linuxgrotto.security.PasswordHash;
 import uk.org.linuxgrotto.signup.IncorrectCredentialsException;
 import uk.org.linuxgrotto.signup.LoginCredentials;

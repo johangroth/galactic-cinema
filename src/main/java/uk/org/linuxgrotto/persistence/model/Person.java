@@ -1,4 +1,4 @@
-package uk.org.linuxgrotto.model;
+package uk.org.linuxgrotto.persistence.model;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
@@ -21,7 +21,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.validator.constraints.Email;
-import uk.org.linuxgrotto.model.base.GalacticCinemaEntity;
+import uk.org.linuxgrotto.persistence.model.base.GalacticCinemaEntity;
 
 import javax.persistence.*;
 import java.util.Date;

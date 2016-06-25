@@ -15,7 +15,7 @@
     <context:annotation-config />
     <context:component-scan base-package="uk.org.linuxgrotto" />
 <!--
-    <jpa:repositories base-package="uk.org.linuxgrotto.repository" entity-manager-factory-ref="entityManagerFactory" />
+    <jpa:repositories base-package="uk.org.linuxgrotto.persistence.repository" entity-manager-factory-ref="entityManagerFactory" />
     <tx:annotation-driven transaction-manager="transactionManager"/>
 -->
 

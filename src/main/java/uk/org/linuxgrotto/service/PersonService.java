@@ -18,8 +18,8 @@ package uk.org.linuxgrotto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uk.org.linuxgrotto.model.Person;
-import uk.org.linuxgrotto.repository.PersonRepository;
+import uk.org.linuxgrotto.persistence.model.Person;
+import uk.org.linuxgrotto.persistence.repository.PersonRepository;
 
 import java.util.List;
 

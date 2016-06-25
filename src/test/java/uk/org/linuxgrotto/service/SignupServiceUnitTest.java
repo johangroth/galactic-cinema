@@ -21,7 +21,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import uk.org.linuxgrotto.model.Person;
+import uk.org.linuxgrotto.persistence.model.Person;
 import uk.org.linuxgrotto.signup.IncorrectCredentialsException;
 import uk.org.linuxgrotto.signup.LoginCredentials;
 

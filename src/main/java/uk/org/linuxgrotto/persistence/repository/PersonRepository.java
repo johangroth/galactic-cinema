@@ -1,4 +1,4 @@
-package uk.org.linuxgrotto.repository.base;
+package uk.org.linuxgrotto.persistence.repository;
 /*
  * galactic-cinema
  * Copyright 2015 Johan Groth
@@ -16,15 +16,14 @@ package uk.org.linuxgrotto.repository.base;
  * limitations under the License.
  */
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.NoRepositoryBean;
-
-import java.io.Serializable;
+import uk.org.linuxgrotto.persistence.model.Person;
+import uk.org.linuxgrotto.persistence.repository.base.BaseRepository;
 
 /**
- * Abstract data access object
- * Created by jgroth on 30/09/15.
+ * Created by jgroth on 07/10/15.
  */
-@NoRepositoryBean
-public interface BaseRepository<T extends Serializable> extends JpaRepository<T, Long> {
+public interface PersonRepository extends BaseRepository<Person> {
+
+    Person findByEmail(String email);
+    Person findByUserName(String userName);
 }

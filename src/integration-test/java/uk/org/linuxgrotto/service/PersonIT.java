@@ -27,8 +27,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import uk.org.linuxgrotto.model.Address;
-import uk.org.linuxgrotto.model.Person;
+import uk.org.linuxgrotto.persistence.model.Address;
+import uk.org.linuxgrotto.persistence.model.Person;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
